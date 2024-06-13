@@ -42,6 +42,18 @@ app.post("/viewall",(req,res) => {
     ).finally()
 })
 
+app.post("/delete",(req,res) => {
+    let input = req.body
+    ksrtcmodel.findByIdAndDelete(input._id).then(
+        (response) => {
+            res.json({"status":"Success"})
+        }
+    ).catch(
+        (error) => {
+            res.json({"status":"Error"})
+        }
+    ).finally()
+})
 
 
 app.listen(8081,()=>{
